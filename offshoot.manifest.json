@@ -1,0 +1,34 @@
+{
+    "plugins": {
+        "SerpentMarioBros1GamePlugin": {
+            "name": "SerpentMarioBros1GamePlugin",
+            "version": "0.1.0",
+            "files": [
+                {
+                    "path": "serpent_MarioBros1_game.py",
+                    "pluggable": "Game"
+                }
+            ],
+            "plugins": [],
+            "libraries": [],
+            "config": {
+                "fps": 2
+            }
+        },
+        "SerpentMarioBros1GameAgentPlugin": {
+            "name": "SerpentMarioBros1GameAgentPlugin",
+            "version": "0.1.0",
+            "files": [
+                {
+                    "path": "serpent_MarioBros1_game_agent.py",
+                    "pluggable": "GameAgent"
+                }
+            ],
+            "plugins": [],
+            "libraries": [],
+            "config": {
+                "frame_handler": "PLAY"
+            }
+        }
+    }
+}
