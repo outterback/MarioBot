@@ -1,4 +1,4 @@
 SerpentMarioBros1GameAgentPlugin:
   frame_handler: PLAY
 SerpentMarioBros1GamePlugin:
-  fps: 10
+  fps: 5

@@ -12,7 +12,7 @@ class SerpentMarioBros1GamePlugin(offshoot.Plugin):
     ]
 
     config = {
-        "fps": 10
+        "fps": 5
     }
 
     @classmethod

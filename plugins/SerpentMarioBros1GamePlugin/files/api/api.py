@@ -9,6 +9,12 @@ class MarioBros1API(GameAPI):
     def my_api_function(self):
         pass
 
+    class SpriteHandler:
+
+        @classmethod
+        def list_sprites(cls):
+            print(MarioBros1API.instance.game.sprites)
+
     class MyAPINamespace:
 
         @classmethod

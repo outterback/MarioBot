@@ -43,7 +43,19 @@ class SerpentMarioBros1Game(Game, metaclass=Singleton):
     @property
     def screen_regions(self):
         regions = {
-            "SAMPLE_REGION": (0, 0, 0, 0)
+            # Regions visible on play and death
+                            # y0   x0   y1   x1
+            "SCORE":         (41,  24,  48,  71),
+            "COINS":         (41, 104,  48, 119),
+            "WORLD_MAJ":     (41, 152,  48, 159),
+            "WORLD_MIN":     (41, 168,  48, 175),
+            "TIME":          (41, 208,  48, 231),
+
+            # Location only on death screen
+            "WORLD_MAJ_DS": (97, 136, 104, 143),
+            "WORLD_MIN_DS": (97, 152, 104, 159),
+            "LIVES_DS": (129, 136, 136, 151),
+            "BOTTOM_BLACK_DS": (143, 0, 265, 285),
         }
 
         return regions
