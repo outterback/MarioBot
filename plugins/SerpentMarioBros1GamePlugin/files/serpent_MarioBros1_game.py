@@ -28,7 +28,6 @@ class SerpentMarioBros1Game(Game, metaclass=Singleton):
 
         time.sleep(5)
         windows = self.window_controller.locate_window(self.window_name).split("\n")
-        print(f'Windows: {windows}')
         self.window_id = self.window_controller.locate_window(self.window_name).split("\n")[0]
 
         #self.window_controller.resize_window(self.window_id, 1024, 768)  #Optional - Can change or skip

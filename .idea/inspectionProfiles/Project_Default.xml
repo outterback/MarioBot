@@ -4,7 +4,7 @@
     <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ignoredPackages">
         <value>
-          <list size="11">
+          <list size="14">
             <item index="0" class="java.lang.String" itemvalue="PyAutoGUI" />
             <item index="1" class="java.lang.String" itemvalue="scikit-image" />
             <item index="2" class="java.lang.String" itemvalue="editdistance" />
@@ -16,8 +16,18 @@
             <item index="8" class="java.lang.String" itemvalue="sneakysnek" />
             <item index="9" class="java.lang.String" itemvalue="mss" />
             <item index="10" class="java.lang.String" itemvalue="redis" />
+            <item index="11" class="java.lang.String" itemvalue="serpent" />
+            <item index="12" class="java.lang.String" itemvalue="pydevd" />
+            <item index="13" class="java.lang.String" itemvalue="cv2" />
           </list>
         </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="pydevd" />
+        </list>
       </option>
     </inspection_tool>
   </profile>
