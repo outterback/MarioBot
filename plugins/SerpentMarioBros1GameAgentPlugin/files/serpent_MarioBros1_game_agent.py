@@ -19,7 +19,7 @@ from math import floor
 
 from typing import Tuple
 
-DEBUG = False
+DEBUG = True
 
 
 class SerpentMarioBros1GameAgent(GameAgent):
@@ -104,7 +104,7 @@ class SerpentMarioBros1GameAgent(GameAgent):
             import sys
             sys.path.insert(0, '/home/oscar/Apps/pycharm-2018.1.1/debug-eggs/pycharm-debug-py3k.egg')
             import pydevd
-            pydevd.settrace('localhost', port=5678, stdoutToServer=True, stderrToServer=True)
+            pydevd.settrace('localhost', port=5678, stdoutToServer=True, stderrToServer=True, suspend=False)
 
         self.init_game(state=0)
         #self.model_handler.load_best()
