@@ -22,12 +22,6 @@ print(f'use_cuda: {use_cuda}')
 Transition = namedtuple('Transition',
                         ('state', 'action', 'next_state', 'reward'))
 
-"""
-64 x 64
-32 x 32
-16 x 16 = 256
-8  x  8 = 64
-"""
 
 class DQN(nn.Module):
     def __init__(self, n_actions):
@@ -44,11 +38,8 @@ class DQN(nn.Module):
 
     def forward(self, x):
         x = F.relu(self.bn1(self.conv1(x)))
-        #print(f'x.shape: {x.shape}')
         x = F.relu(self.bn2(self.conv2(x)))
-        #print(f'x.shape: {x.shape}')
         x = F.relu(self.bn3(self.conv3(x)))
-        #print(f'x.shape: {x.shape}')
 
         return self.head(x.view(x.size(0), -1))
 

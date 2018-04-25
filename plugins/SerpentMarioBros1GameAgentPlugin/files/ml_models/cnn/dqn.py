@@ -27,31 +27,21 @@ print(f'use_cuda: {use_cuda}')
 Transition = namedtuple('Transition',
                         ('state', 'action', 'next_state', 'reward'))
 
-"""
-64 x 64
-32 x 32
-16 x 16 = 256
-8  x  8 = 64
-"""
-
 
 class DQN(nn.Module):
     def __init__(self, n_actions):
         super().__init__()
 
-        self.conv1 = nn.Conv2d(3, 16, kernel_size=5, stride=2, padding=2)
+        self.conv1 = nn.Conv2d(3, 16, kernel_size=3, stride=2, padding=1)
         self.bn1 = nn.BatchNorm2d(16)
-        #  /2
 
-        self.conv2 = nn.Conv2d(16, 32, kernel_size=5, stride=2, padding=2)
+        self.conv2 = nn.Conv2d(16, 32, kernel_size=3, stride=2, padding=1)
         self.bn2 = nn.BatchNorm2d(32)
-        #  /2
 
-        self.conv3 = nn.Conv2d(32, 32, kernel_size=5, stride=2, padding=2)
+        self.conv3 = nn.Conv2d(32, 32, kernel_size=3, stride=2, padding=1)
         self.bn3 = nn.BatchNorm2d(32)
-        #  /2
 
-        self.conv4 = nn.Conv2d(32, 32, kernel_size=5, stride=2, padding=2)
+        self.conv4 = nn.Conv2d(32, 32, kernel_size=3, stride=2, padding=1)
         self.bn4 = nn.BatchNorm2d(32)
 
         self.head = nn.Linear(32 * 4 * 4, n_actions)
@@ -91,10 +81,12 @@ class ModelHandler:
         self.policy_net = DQN(num_actions)
         self.target_net = DQN(num_actions)
         self.target_net.load_state_dict(self.policy_net.state_dict())
+
         #  target_net is never being trained, it is slowly updated by copying the policy_net.
         #  .eval() sets mode for target_net from train to predict
         self.target_net.eval()
-        if use_cuda:
+        self.use_cuda = torch.cuda.is_available()
+        if self.use_cuda:
             logging.info('Enabling CUDA')
             self.policy_net.cuda()
             self.target_net.cuda()
@@ -106,14 +98,13 @@ class ModelHandler:
         self.GAMMA = 0.99
         self.EPS_START = 1.0
         self.EPS_END = 0.1
-        self.EPS_DECAY = 580000
+        self.EPS_DECAY = 100000
 
         self.epoch = 0
         self.best_precision = 0
 
         self.eps = lambda steps: self.EPS_END + (self.EPS_START - self.EPS_END) * \
                                  math.exp(-1 * steps / self.EPS_DECAY)
-
         self.steps_done = 0
 
     def select_action(self, state):
@@ -154,8 +145,11 @@ class ModelHandler:
         reward_batch = V(torch.stack(batch.reward))
         action_batch = V(torch.stack(batch.action))
 
-        state_batch.cuda()
-        action_batch.cuda()
+        if self.use_cuda:
+            state_batch = state_batch.cuda()
+            action_batch = action_batch.cuda()
+            reward_batch = reward_batch.cuda()
+            non_final_next_states = non_final_next_states.cuda()
 
         state_action_values = self.policy_net(state_batch).gather(1, action_batch.long())
 
@@ -181,6 +175,15 @@ class ModelHandler:
         reward_t = Tensor([reward])
         self.memory.push(state_t, action_t, next_state_t, reward_t)
 
+    def save_memory(self):
+        file_name = 'replay_memory.mem'
+        mem_path = str(self.model_path / file_name)
+        memory = {"memory": self.memory.memory,
+                  "num_elements": len(self.memory)
+            }
+        torch.save(memory, str(mem_path))
+        logging.info(f'Saved replay memory to {str(mem_path)}, num_el: {len(self.memory)}')
+
     def save_model(self, ep):
         model_state = {
             'epoch':      ep,
@@ -193,7 +196,8 @@ class ModelHandler:
         pass
 
     def _save_checkpoint(self, model_state: Dict, is_best: bool, filename='checkpoint.mdl'):
-        model_path = str(self.model_path / filename)
+        (self.model_path / 'saved').mkdir(parents=True, exist_ok=True)
+        model_path = str(self.model_path / 'saved' / filename)
         torch.save(model_state, model_path)
         if is_best:
             shutil.copyfile(model_path, str(self.model_path / 'model_best.mdl'))

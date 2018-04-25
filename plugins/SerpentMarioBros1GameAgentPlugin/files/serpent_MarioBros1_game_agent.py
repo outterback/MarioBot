@@ -19,7 +19,7 @@ from math import floor
 
 from typing import Tuple
 
-DEBUG = True
+DEBUG = False
 
 
 class SerpentMarioBros1GameAgent(GameAgent):
@@ -57,16 +57,9 @@ class SerpentMarioBros1GameAgent(GameAgent):
 
 
         keyboard_input = {
-            #0: (KeyboardKey.KEY_W,),
-
             0: (KeyboardKey.KEY_D,),
             1: (KeyboardKey.KEY_A,),
 
-            #2: (KeyboardKey.KEY_W, KeyboardKey.KEY_D),
-            #3: (KeyboardKey.KEY_A, KeyboardKey.KEY_W),
-            #4: (KeyboardKey.KEY_A, KeyboardKey.KEY_D),
-            #5: (KeyboardKey.KEY_D, KeyboardKey.KEY_S),
-            #6: (KeyboardKey.KEY_S, KeyboardKey.KEY_A),
             }
 
         n_dir = len(keyboard_input)
@@ -96,7 +89,7 @@ class SerpentMarioBros1GameAgent(GameAgent):
 
         self.global_frame_ctr = 0
         self.episode = 0
-        self.reuse_actions = 3
+        self.reuse_actions = 2
 
     def setup_play(self):
         print('Setup SUPER MARIO')
@@ -113,9 +106,8 @@ class SerpentMarioBros1GameAgent(GameAgent):
             import pydevd
             pydevd.settrace('localhost', port=5678, stdoutToServer=True, stderrToServer=True)
 
- aaaaaaaaaaaaaaaaaaaaaaaaaaaa       self.init_game(state=0)
+        self.init_game(state=0)
         #self.model_handler.load_best()
-        #self.init_npys()
 
     def init_game(self, state=0):
 
@@ -262,7 +254,7 @@ class SerpentMarioBros1GameAgent(GameAgent):
 
         frame_buffer = self.game_frame_buffer
         frames = (game_frame.quarter_resolution_frame, frame_buffer.frames[0].quarter_resolution_frame, frame_buffer.frames[1].quarter_resolution_frame)
-        frames = list(torch.FloatTensor(self.preprocess_frame(frame[y0:y0 + h, x0:x0 + w])).cuda() for frame in frames)
+        frames = list(torch.FloatTensor(self.preprocess_frame(frame[y0:y0 + h, x0:x0 + w])) for frame in frames)
 
         current_state = torch.stack(frames, dim=0)
 
@@ -275,34 +267,6 @@ class SerpentMarioBros1GameAgent(GameAgent):
         status_string += f" {' '.join(key_strs):15} "
         if self.DO_CONTROL:
             self.input_controller.handle_keys(keys)
-
-
-
-        #logging.debug(f'action: {action} {self.action_to_key[action]}')
-
-        """
-        original frame size:
-            start: (25, 0)
-            h = 224
-            w = 256
-            
-            game_frame.frame[25:25+h,:w]) 
-            
-            224 = 7 * 2**5
-            256 = 2**8
-            
-        quarter:
-            start (6, 0)
-            55 x 64
-            game_frame.quarter_resolution_frame[6:, :] ) 
-            
-        eighth:
-            start: (2, 0)
-            height: 27
-            width: 30
-            game_frame.eighth_resolution_frame[3:30,:30]
-            
-        """
 
         api = self.game.api
         if api.ScreenReader.is_game_over(game_frame):
@@ -317,17 +281,28 @@ class SerpentMarioBros1GameAgent(GameAgent):
             status_string += f'Mario x: {int((x0+x1)/2):4d} y: {int((y0+y1)/2):4d} '
 
         status_string += f" rew:{frame_reward} tot: {self.total_reward}  "
+
         if self.last_state is not None and self.last_action is not None:
             next_state = None if _game_over else current_state
             self.model_handler.push_memory(self.last_state, self.last_action, next_state, frame_reward)
 
+
         self.last_state = current_state
         self.last_action = action
         self.model_handler.update_policy_net()
+
         if self.global_frame_ctr % 20 == 0:
             self.model_handler.update_target_net()
-        if self.global_frame_ctr % 200 == 0:
+        if self.global_frame_ctr % 2000 == 0:
             self.model_handler.save_model(self.global_frame_ctr)
+        if self.global_frame_ctr % 25000 == 0:
+            self.model_handler.save_memory()
+
+        #  It is unlikely that an episode is this long, we're probably stuck somewhere.
+        if self.frame_counter % 1500 == 0:
+            print('Force restarting game in case of stuck in menu')
+            self.init_game(0)
+            
         print(status_string)
         if _game_over:
             self.episode += 1
