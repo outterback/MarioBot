@@ -1,5 +1,6 @@
 import logging
 import pickle
+import random
 import time
 import torch
 from collections import defaultdict, deque
@@ -16,10 +17,17 @@ from .ml_models.cnn.dqn import ModelHandler
 import numpy as np
 import cv2
 from math import floor
+from statistics import mean
+
 
 from typing import Tuple
 
 DEBUG = True
+
+DOCKER_PATHS = True
+
+PROJECT_PATH = Path('/home/oscar') if not DOCKER_PATHS else Path('/home/docker/development')
+print('PROJECT PATH: ', PROJECT_PATH)
 
 
 class SerpentMarioBros1GameAgent(GameAgent):
@@ -41,7 +49,7 @@ class SerpentMarioBros1GameAgent(GameAgent):
         self.sprite_locator = SpriteLocator()
 
         with open(
-                '/home/oscar/Dev/PycharmProjects/serpent/plugins/SerpentMarioBros1GameAgentPlugin/files/ml_models/digit_classifier.pkl',
+                PROJECT_PATH / 'Dev/PycharmProjects/serpent/plugins/SerpentMarioBros1GameAgentPlugin/files/ml_models/digit_classifier.pkl',
                 'rb') as pkl:
             self.digit_classifier = pickle.load(pkl)
 
@@ -53,8 +61,7 @@ class SerpentMarioBros1GameAgent(GameAgent):
         self._frame_reward_hysteresis = 5
         self.waiting_to_start = True
 
-        self.model_path = Path('/home/oscar/Dev/PycharmProjects/serpent/plugins/SerpentMarioBros1GameAgentPlugin/files/ml_models/cnn')
-
+        self.model_path = PROJECT_PATH / 'Dev/PycharmProjects/serpent/plugins/SerpentMarioBros1GameAgentPlugin/files/ml_models/cnn'
 
         keyboard_input = {
             0: (KeyboardKey.KEY_D,),
@@ -66,8 +73,8 @@ class SerpentMarioBros1GameAgent(GameAgent):
         for k, v in sorted(keyboard_input.items()).copy():
             print(k, v)
             keyboard_input[k + n_dir] = keyboard_input[k] + (KeyboardKey.KEY_J,)
-            keyboard_input[k + 2*n_dir] = keyboard_input[k] + (KeyboardKey.KEY_K,)
-            keyboard_input[k + 3*n_dir] = keyboard_input[k] + (KeyboardKey.KEY_J, KeyboardKey.KEY_K)
+            keyboard_input[k + 2 * n_dir] = keyboard_input[k] + (KeyboardKey.KEY_K,)
+            keyboard_input[k + 3 * n_dir] = keyboard_input[k] + (KeyboardKey.KEY_J, KeyboardKey.KEY_K)
 
         self.action_to_key = keyboard_input
         self.keys_to_actions = {v: k for k, v in keyboard_input.items()}
@@ -91,25 +98,34 @@ class SerpentMarioBros1GameAgent(GameAgent):
         self.episode = 0
         self.reuse_actions = 2
 
+        self.play_mode = 'eval'
+        self.best_train_reward = -1
+        self.best_eval_reward = -1
+        self.episode_lengths = []
+        self.episode_rewards = []
+
     def setup_play(self):
         print('Setup SUPER MARIO')
         logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
         if DEBUG:
-
             print('--------- REMINDER --------- ')
             print('        DEBUG MODE IS ON      ')
             print('   PYTHON NEEDS TO BE RESUMED ')
             print('   FROM THE PYCHARM DEBUGGER   ')
             print('--------- REMINDER --------- ')
+            print(' Not anymore hehe')
             import sys
-            sys.path.insert(0, '/home/oscar/Apps/pycharm-2018.1.1/debug-eggs/pycharm-debug-py3k.egg')
+            # sys.path.insert(0, '/home/oscar/Apps/pycharm-2018.1.1/debug-eggs/pycharm-debug-py3k.egg')
+            sys.path.insert(0, '/home/docker/development/Dev/pycharm-debug-py3k.egg')
             import pydevd
             pydevd.settrace('localhost', port=5678, stdoutToServer=True, stderrToServer=True, suspend=False)
 
-        self.init_game(state=0)
-        #self.model_handler.load_best()
+        self.model_handler.load_best()
+        self.model_handler.load_memory()
+        self.init_game(state=0, mode='eval')
 
-    def init_game(self, state=0):
+    def init_game(self, state=0, mode='train'):
+
 
         state_key = {
             0: KeyboardKey.KEY_0,
@@ -129,17 +145,20 @@ class SerpentMarioBros1GameAgent(GameAgent):
             'PAUSE':      KeyboardKey.KEY_ENTER
             }
 
-        print(f'Initializing game state: {state}')
+        print(f' -- Init game -- state: {state} mode: {mode}')
         ic = self.input_controller
         ic.tap_key(state_key[state])
         time.sleep(0.2)
         ic.tap_key(keys['LOAD_STATE'])
         # time.sleep(0.2)
         # ic.tap_key(keys['PAUSE'])
+        self.play_mode = mode
+        self.model_handler.set_mode(mode)
         self.total_reward = 0
         self.frame_counter = 0
+        self.last_action = None
+        self.last_state = None
         self.waiting_to_start = True
-
 
     def preprocess_frame(self, frame):
         """
@@ -151,22 +170,18 @@ class SerpentMarioBros1GameAgent(GameAgent):
 
         return frame
 
-
-
-
     def compute_reward(self, game_frame) -> int:
         # if self.frame_counter < self._frame_reward_hysteresis:
         #    return 0
 
         past_frames = self.game_frame_buffer.frames
         try:
-            last_frame = cv2.resize(past_frames[0].eighth_resolution_grayscale_frame, dsize=(0,0), fx = 0.5, fy=0.5,
+            last_frame = cv2.resize(past_frames[0].eighth_resolution_grayscale_frame, dsize=(0, 0), fx=0.5, fy=0.5,
                                     interpolation=cv2.INTER_NEAREST)
         except IndexError:
             return 0
-        this_frame = cv2.resize(game_frame.eighth_resolution_grayscale_frame, (0,0), fx=0.5, fy=0.5,
+        this_frame = cv2.resize(game_frame.eighth_resolution_grayscale_frame, (0, 0), fx=0.5, fy=0.5,
                                 interpolation=cv2.INTER_NEAREST)
-
 
         frame_diff = this_frame - last_frame
         self.visual_debugger.store_image_data(
@@ -178,15 +193,17 @@ class SerpentMarioBros1GameAgent(GameAgent):
         ret, thresh = cv2.threshold(frame_diff, 0, 1, cv2.THRESH_BINARY)
         diff_score = (np.sum(thresh) / thresh.size) * 160
         frame_reward = int(floor(diff_score))
-        meter = 'X' * frame_reward
         digits = self.game.api.ScreenReader.get_digits(game_frame)
         digits_last = self.game.api.ScreenReader.get_digits(past_frames[0])
 
         try:
-            frame_reward += (digits['SCORE'] - digits_last['SCORE'])
+            score_diff = (digits['SCORE'] - digits_last['SCORE'])
+            score_diff = score_diff if score_diff > 0 else 0  # glitch in score reading, sometimes it's negative
+            frame_reward += score_diff
         except (KeyError, ValueError, TypeError):
             pass
-
+        if frame_reward < 4:
+            frame_reward = 0
         return frame_reward
 
     def _is_dead(self, game_frame):
@@ -201,7 +218,6 @@ class SerpentMarioBros1GameAgent(GameAgent):
 
     def _identify_mario(self, game_frame, mario_location: Tuple):
         """
-
         :param game_frame:
         :param mario_location:
         :return:
@@ -226,7 +242,6 @@ class SerpentMarioBros1GameAgent(GameAgent):
                 status_string += f'  sprite name: {sprite_name}'
 
         return (sub_frame, sprite_name)
-
 
     def handle_play(self, game_frame):
 
@@ -253,8 +268,9 @@ class SerpentMarioBros1GameAgent(GameAgent):
         x0 = 0
 
         frame_buffer = self.game_frame_buffer
-        frames = (game_frame.quarter_resolution_frame, frame_buffer.frames[0].quarter_resolution_frame, frame_buffer.frames[1].quarter_resolution_frame)
-        frames = list(torch.FloatTensor(self.preprocess_frame(frame[y0:y0 + h, x0:x0 + w])) for frame in frames)
+        frames = (game_frame.quarter_resolution_frame, frame_buffer.frames[0].quarter_resolution_frame,
+                  frame_buffer.frames[1].quarter_resolution_frame)
+        frames = list(torch.ByteTensor(self.preprocess_frame(frame[y0:y0 + h, x0:x0 + w])) for frame in frames)
 
         current_state = torch.stack(frames, dim=0)
 
@@ -269,43 +285,68 @@ class SerpentMarioBros1GameAgent(GameAgent):
             self.input_controller.handle_keys(keys)
 
         api = self.game.api
+
+        mario_location = api.ScreenReader.find_mario(game_frame)
+        if mario_location is not None:
+            y0, x0, y1, x1 = mario_location
+            coords_str = f'x: {int((x0+x1)/2):4d} y: {int((y0+y1)/2):4d} '
+        else:
+            coords_str = 'not found'
+        status_string += f'Mario {coords_str:12}'
+
+        status_string += f" rew:{frame_reward} tot: {self.total_reward}  "
+
         if api.ScreenReader.is_game_over(game_frame):
             # mark transition as final
             # finalize run
             _game_over = True
             status_string += f' DEATH SCREEN '
 
-        mario_location = api.ScreenReader.find_mario(game_frame)
-        if mario_location is not None:
-            y0, x0, y1, x1 = mario_location
-            status_string += f'Mario x: {int((x0+x1)/2):4d} y: {int((y0+y1)/2):4d} '
 
-        status_string += f" rew:{frame_reward} tot: {self.total_reward}  "
-
-        if self.last_state is not None and self.last_action is not None:
+        if self.play_mode == 'train' and self.last_state is not None and self.last_action is not None:
             next_state = None if _game_over else current_state
             self.model_handler.push_memory(self.last_state, self.last_action, next_state, frame_reward)
 
-
         self.last_state = current_state
         self.last_action = action
-        self.model_handler.update_policy_net()
 
-        if self.global_frame_ctr % 20 == 0:
-            self.model_handler.update_target_net()
+        if self.play_mode == 'train':
+            self.model_handler.update_policy_net()
+            if self.global_frame_ctr % 20 == 0:
+                self.model_handler.update_target_net()
+
         if self.global_frame_ctr % 2000 == 0:
+            logging.debug('Saving model')
             self.model_handler.save_model(self.global_frame_ctr)
-        if self.global_frame_ctr % 25000 == 0:
             self.model_handler.save_memory()
 
         #  It is unlikely that an episode is this long, we're probably stuck somewhere.
-        if self.frame_counter % 1500 == 0:
-            print('Force restarting game in case of stuck in menu')
-            self.init_game(0)
-            
+        if self.frame_counter % 250 == 0:
+            logging.info('Force restarting game in case of stuck in menu')
+            self.init_game(0, 'train')
+
         print(status_string)
         if _game_over:
             self.episode += 1
-            self.init_game(0)
+
+            if self.play_mode == 'train' and self.total_reward > self.best_train_reward:
+                print(f'New record, TRAIN: {self.total_reward}')
+                self.best_train_reward = self.total_reward
+            elif self.play_mode == 'eval' and self.total_reward > self.best_eval_reward:
+                print(f'New record, EVAL: {self.total_reward}')
+                self.best_eval_reward = self.total_reward
+
+            self.episode_lengths.append(self.frame_counter)
+            self.episode_rewards.append(self.total_reward)
+
+            print(f'Episode length: {self.frame_counter} best: {max(self.episode_lengths)}'
+                  f' average: {mean(self.episode_lengths):.2f}'
+                  f' episode reward: {self.total_reward}'
+                  f' average reward: {mean(self.episode_rewards)}'
+                  f' best eval: {self.best_eval_reward} best train: {self.best_train_reward}'
+                  )
+            mode = 'eval' if self.episode % 50 == 0 else 'train'
+            save_state_to_load = random.randint(0, 5) if mode == 'train' else 0
+            self.init_game(save_state_to_load, mode)
 
         pass

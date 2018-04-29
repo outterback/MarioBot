@@ -44,15 +44,24 @@ class DQN(nn.Module):
         self.conv4 = nn.Conv2d(32, 32, kernel_size=3, stride=2, padding=1)
         self.bn4 = nn.BatchNorm2d(32)
 
-        self.head = nn.Linear(32 * 4 * 4, n_actions)
+        self.conv5 = nn.Conv2d(32, 32, kernel_size=3, stride=2, padding=1)
+        self.bn5 = nn.BatchNorm2d(32)
+
+        self.fc1 = nn.Linear(32 * 2 * 2, 32 * 2 * 2)
+
+        self.head = nn.Linear(32 * 2 * 2, n_actions)
 
     def forward(self, x):
         x = F.relu(self.bn1(self.conv1(x)))
         x = F.relu(self.bn2(self.conv2(x)))
         x = F.relu(self.bn3(self.conv3(x)))
         x = F.relu(self.bn4(self.conv4(x)))
+        x = F.relu(self.bn5(self.conv5(x)))
+        x = F.relu(self.fc1(x.view(x.size(0), -1)))
 
-        return self.head(x.view(x.size(0), -1))
+        output = self.head(x)
+
+        return output
 
 
 class ReplayMemory:
@@ -76,6 +85,7 @@ class ReplayMemory:
 
 class ModelHandler:
     def __init__(self, model_path: Path, num_actions=6):
+        logging.getLogger().setLevel(logging.DEBUG)
         self.model_path = model_path
         self.num_actions = num_actions
         self.policy_net = DQN(num_actions)
@@ -98,7 +108,7 @@ class ModelHandler:
         self.GAMMA = 0.99
         self.EPS_START = 1.0
         self.EPS_END = 0.1
-        self.EPS_DECAY = 100000
+        self.EPS_DECAY = 1000000
 
         self.epoch = 0
         self.best_precision = 0
@@ -106,6 +116,15 @@ class ModelHandler:
         self.eps = lambda steps: self.EPS_END + (self.EPS_START - self.EPS_END) * \
                                  math.exp(-1 * steps / self.EPS_DECAY)
         self.steps_done = 0
+
+    def set_mode(self, mode):
+        mode_to_eps = {
+            'train': lambda steps: self.EPS_END + (self.EPS_START - self.EPS_END) * \
+                                   math.exp(-1 * steps / self.EPS_DECAY),
+            'eval': lambda steps: -1
+            }
+
+        self.eps = mode_to_eps[mode]
 
     def select_action(self, state):
         if type(state) == np.ndarray:
@@ -118,14 +137,14 @@ class ModelHandler:
         self.steps_done += 1
 
         action_type = 'Greedy' if sample > eps_thresh else 'Random'
-        log_str = f'samp: {sample:.2f} > {eps_thresh:.2f} ? {action_type}'
+        log_str = f'samp: {sample:6.2f} > {eps_thresh:6.2f} ? {action_type:7}'
         logging.debug(log_str)
 
         if sample > eps_thresh:
-            values = self.policy_net(
+            actions = self.policy_net(
                     V(state, volatile=True).type(FloatTensor)
                     ).data.max(1)[1].view(1, 1)
-            return values
+            return actions
         else:
             return LongTensor([[random.randrange(self.num_actions)]])
 
@@ -151,10 +170,10 @@ class ModelHandler:
             reward_batch = reward_batch.cuda()
             non_final_next_states = non_final_next_states.cuda()
 
-        state_action_values = self.policy_net(state_batch).gather(1, action_batch.long())
+        state_action_values = self.policy_net(state_batch.float()).gather(1, action_batch.long())
 
         next_state_values = V(torch.zeros(self.BATCH_SIZE).type(Tensor))
-        next_state_values[non_final_mask] = self.target_net(non_final_next_states).max(1)[0]
+        next_state_values[non_final_mask] = self.target_net(non_final_next_states.float()).max(1)[0]
         expected_state_action_values = (next_state_values * self.GAMMA).view(-1, 1) + reward_batch
         expected_state_action_values = V(expected_state_action_values.data)
 
@@ -175,11 +194,31 @@ class ModelHandler:
         reward_t = Tensor([reward])
         self.memory.push(state_t, action_t, next_state_t, reward_t)
 
+    def load_memory(self):
+        file_name = 'replay_memory.mem'
+        mem_path = str(self.model_path / file_name)
+        try:
+            memory = torch.load(str(mem_path))
+        except FileNotFoundError:
+            logging.info('No memory file to load from')
+            return
+        num_none = 0
+        for i, trans in enumerate(memory['memory']):
+            if i % 2000 == 0:
+                print(f"Loading memory, {i} / {len(memory['memory'])}")
+            if trans is None:
+                num_none += 1
+                print(f'None: {i}')
+                continue
+            self.memory.push(*trans)
+            self.steps_done += 1
+
     def save_memory(self):
         file_name = 'replay_memory.mem'
         mem_path = str(self.model_path / file_name)
-        memory = {"memory": self.memory.memory,
-                  "num_elements": len(self.memory)
+        memory = {
+            "memory":       self.memory.memory,
+            "num_elements": len(self.memory)
             }
         torch.save(memory, str(mem_path))
         logging.info(f'Saved replay memory to {str(mem_path)}, num_el: {len(self.memory)}')

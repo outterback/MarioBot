@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/plugins/SerpentMarioBros1GameAgentPlugin/files/serpent_MarioBros1_game_agent.py" line="89" mnemonic="6" />
+    <bookmark url="file://$PROJECT_DIR$/plugins/SerpentMarioBros1GameAgentPlugin/files/ml_models/cnn/dqn.py" line="143" mnemonic="6" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="75b71f6e-bef0-461b-bae7-bb1c4c154244" name="Default" comment="Functionality added&#10;&#10;Identifies Mario sprites, reports location&#10;Identifies if on death screen&#10;Loads state on death screen find&#10;Reads and parses digits:&#10;  Score&#10;  Lives&#10;  World&#10;  Coins&#10;  Time">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/SerpentMarioBros1GameAgentPlugin/files/ml_models/cnn/dqn.py" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/SerpentMarioBros1GameAgentPlugin/files/ml_models/cnn/dqn.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/plugins/SerpentMarioBros1GameAgentPlugin/files/serpent_MarioBros1_game_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/SerpentMarioBros1GameAgentPlugin/files/serpent_MarioBros1_game_agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/SerpentMarioBros1GamePlugin/files/api/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/SerpentMarioBros1GamePlugin/files/api/api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/SerpentMarioBros1GamePlugin/files/serpent_MarioBros1_game.py" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/SerpentMarioBros1GamePlugin/files/serpent_MarioBros1_game.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,16 +20,18 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/serpent$.coverage" NAME=" Coverage Results" MODIFIED="1522844890429" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/serpent$scratch_2.coverage" NAME="scratch_2 Coverage Results" MODIFIED="1523825445885" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
     <SUITE FILE_PATH="coverage/serpent$game.coverage" NAME="game Coverage Results" MODIFIED="1524060898383" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/.local/share/virtualenvs/dev-lab-S8LRmcaK/lib/python3.6/site-packages/serpent" />
-    <SUITE FILE_PATH="coverage/serpent$scratch_4.coverage" NAME="scratch_4 Coverage Results" MODIFIED="1524072507664" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
+    <SUITE FILE_PATH="coverage/serpent$scratch_2.coverage" NAME="scratch_2 Coverage Results" MODIFIED="1524949863696" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
+    <SUITE FILE_PATH="coverage/serpent$scratch_4.coverage" NAME="scratch_4 Coverage Results" MODIFIED="1524988499279" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
     <SUITE FILE_PATH="coverage/serpent$derp.coverage" NAME="derp Coverage Results" MODIFIED="1523392884563" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/datasets/sprites" />
     <SUITE FILE_PATH="coverage/serpent$mario_image_diff.coverage" NAME="mario_image_diff Coverage Results" MODIFIED="1523893146030" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lab" />
     <SUITE FILE_PATH="coverage/serpent$torch_lab.coverage" NAME="torch_lab Coverage Results" MODIFIED="1524325830700" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lab/ml/conv_net" />
+    <SUITE FILE_PATH="coverage/serpent$scratch_3.coverage" NAME="scratch_3 Coverage Results" MODIFIED="1524983859961" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
     <SUITE FILE_PATH="coverage/serpent$scratch_6.coverage" NAME="scratch_6 Coverage Results" MODIFIED="1524384644857" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
     <SUITE FILE_PATH="coverage/serpent$check_sprite_sheet.coverage" NAME="check_sprite_sheet Coverage Results" MODIFIED="1523453576905" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lab" />
     <SUITE FILE_PATH="coverage/serpent$check_colors.coverage" NAME="check_colors Coverage Results" MODIFIED="1523455573232" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lab" />
     <SUITE FILE_PATH="coverage/serpent$serpent.coverage" NAME="serpent Coverage Results" MODIFIED="1524235726312" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/serpent$scratch.coverage" NAME="scratch Coverage Results" MODIFIED="1524934333012" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
     <SUITE FILE_PATH="coverage/serpent$check_small_sprite_sheet.coverage" NAME="check_small_sprite_sheet Coverage Results" MODIFIED="1523433044073" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lab" />
     <SUITE FILE_PATH="coverage/serpent$scratch_1.coverage" NAME="scratch_1 Coverage Results" MODIFIED="1523824171219" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
     <SUITE FILE_PATH="coverage/serpent$npysc.coverage" NAME="npysc Coverage Results" MODIFIED="1524384684243" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lab" />
@@ -1732,9 +1735,9 @@
             <favorite_root url="file://$PROJECT_DIR$/plugins/SerpentMarioBros1GameAgentPlugin/files/helpers/.gitkeep" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
           </favorite_root>
           <favorite_root url="file://$PROJECT_DIR$/plugins/SerpentMarioBros1GameAgentPlugin/files/ml_models" module="serpent" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
-            <favorite_root url="file://$PROJECT_DIR$/plugins/SerpentMarioBros1GameAgentPlugin/files/ml_models/cnn" module="serpent" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+            <favorite_root url="file://$PROJECT_DIR$/plugins/SerpentMarioBros1GameAgentPlugin/files/ml_models/cnn/bkp" module="serpent" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
               <favorite_root url="file://$PROJECT_DIR$/plugins/SerpentMarioBros1GameAgentPlugin/files/ml_models/cnn/dqn.py" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
-              <favorite_root url="file://$PROJECT_DIR$/plugins/SerpentMarioBros1GameAgentPlugin/files/ml_models/cnn/model_best.mdl" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+              <favorite_root url="file://$PROJECT_DIR$/plugins/SerpentMarioBros1GameAgentPlugin/files/ml_models/cnn/bkp/model_best.mdl" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
               <favorite_root url="file://$PROJECT_DIR$/plugins/SerpentMarioBros1GameAgentPlugin/files/ml_models/cnn/checkpoint-200.mld" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
               <favorite_root url="file://$PROJECT_DIR$/plugins/SerpentMarioBros1GameAgentPlugin/files/ml_models/cnn/checkpoint-400.mld" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
               <favorite_root url="file://$PROJECT_DIR$/plugins/SerpentMarioBros1GameAgentPlugin/files/ml_models/cnn/checkpoint-600.mld" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
@@ -2174,8 +2177,25 @@
       <file leaf-file-name="serpent_MarioBros1_game_agent.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/plugins/SerpentMarioBros1GameAgentPlugin/files/serpent_MarioBros1_game_agent.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="436">
-              <caret line="256" column="87" lean-forward="true" selection-start-line="256" selection-start-column="87" selection-end-line="256" selection-end-column="87" />
+            <state relative-caret-position="387">
+              <caret line="323" column="34" selection-start-line="323" selection-start-column="34" selection-end-line="323" selection-end-column="34" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+                <element signature="e#2975#3823#0" />
+                <element signature="e#4756#4934#0" />
+                <element signature="e#5112#6481#0" />
+                <element signature="e#6311#6730#0" />
+                <element signature="e#6806#7630#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dqn.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/plugins/SerpentMarioBros1GameAgentPlugin/files/ml_models/cnn/dqn.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="645">
+              <caret line="174" column="69" selection-start-line="174" selection-start-column="69" selection-end-line="174" selection-end-column="69" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -2183,34 +2203,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="check_colors.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lab/scratch/check_colors.py">
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.virtualenvs/dev-lab-S8LRmcaK/lib/python3.6/site-packages/pyautogui/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
+            <state relative-caret-position="289">
+              <caret line="163" selection-start-line="163" selection-end-line="163" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="1033">
-                <caret line="32" column="2" selection-start-line="32" selection-start-column="2" selection-end-line="32" selection-end-column="2" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Markdown-facit" pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/Markdown-facit">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="13" column="9" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
-            </state>
-          </provider>
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="true">
+        <entry file="remoteDebugVfs:///usr/local/lib/python3.6/dist-packages/pyautogui/__init__.py">
+          <provider selected="true" editor-type-id="py-remote-debug-stub-editor" />
         </entry>
       </file>
     </leaf>
@@ -2258,19 +2262,13 @@
         <option value="$PROJECT_DIR$/lab/play_mario_bros.sh" />
         <option value="$PROJECT_DIR$/datasets/sprites/derp.py" />
         <option value="$PROJECT_DIR$/lab/check_sprite_sheet.py" />
-        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
         <option value="$PROJECT_DIR$/lab/check_small_sprite_sheet.py" />
         <option value="$PROJECT_DIR$/lab/check_colors.py" />
-        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_1.py" />
-        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_2.py" />
         <option value="$PROJECT_DIR$/lab/mario_image_diff.py" />
         <option value="$PROJECT_DIR$/lab/check_large_sprite_sheet.py" />
         <option value="$PROJECT_DIR$/lab/ml/digit_classification/look_at_digits.py" />
-        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_4.py" />
         <option value="$PROJECT_DIR$/lab/ml/digit_classification/digits.ipynb" />
-        <option value="$PROJECT_DIR$/plugins/SerpentMarioBros1GamePlugin/files/serpent_MarioBros1_game.py" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_5.py" />
-        <option value="$PROJECT_DIR$/plugins/SerpentMarioBros1GamePlugin/files/api/api.py" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/buffer1.txt" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_6.py" />
         <option value="$PROJECT_DIR$/lab/npysc.py" />
@@ -2283,12 +2281,19 @@
         <option value="$PROJECT_DIR$/config/config.plugins.yml" />
         <option value="$PROJECT_DIR$/plugins/SerpentMarioBros1GamePlugin/plugin.py" />
         <option value="$USER_HOME$/.local/share/virtualenvs/dev-lab-S8LRmcaK/lib/python3.6/site-packages/torch/nn/functional.py" />
-        <option value="$PROJECT_DIR$/plugins/SerpentMarioBros1GameAgentPlugin/files/ml_models/cnn/dqn.py" />
         <option value="$PROJECT_DIR$/lab/ml/conv_net/torch_lab.py" />
         <option value="$PROJECT_DIR$/lab/resolutions" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/Markdown-facit" />
-        <option value="$PROJECT_DIR$/plugins/SerpentMarioBros1GameAgentPlugin/files/serpent_MarioBros1_game_agent.py" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/plugins/SerpentMarioBros1GamePlugin/files/api/api.py" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
+        <option value="$PROJECT_DIR$/plugins/SerpentMarioBros1GamePlugin/files/serpent_MarioBros1_game.py" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_1.py" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_2.py" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_3.py" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_4.py" />
+        <option value="$PROJECT_DIR$/plugins/SerpentMarioBros1GameAgentPlugin/files/ml_models/cnn/dqn.py" />
+        <option value="$PROJECT_DIR$/plugins/SerpentMarioBros1GameAgentPlugin/files/serpent_MarioBros1_game_agent.py" />
       </list>
     </option>
   </component>
@@ -2308,16 +2313,17 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1930" />
-    <option name="y" value="1117" />
-    <option name="width" value="1345" />
-    <option name="height" value="1393" />
+    <option name="x" value="1932" />
+    <option name="y" value="1119" />
+    <option name="width" value="1382" />
+    <option name="height" value="1389" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -2337,6 +2343,62 @@
             </path>
             <path>
               <item name="serpent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="serpent" type="462c0819:PsiDirectoryNode" />
+              <item name="plugins" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="serpent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="serpent" type="462c0819:PsiDirectoryNode" />
+              <item name="plugins" type="462c0819:PsiDirectoryNode" />
+              <item name="SerpentMarioBros1GameAgentPlugin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="serpent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="serpent" type="462c0819:PsiDirectoryNode" />
+              <item name="plugins" type="462c0819:PsiDirectoryNode" />
+              <item name="SerpentMarioBros1GameAgentPlugin" type="462c0819:PsiDirectoryNode" />
+              <item name="files" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="serpent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="serpent" type="462c0819:PsiDirectoryNode" />
+              <item name="plugins" type="462c0819:PsiDirectoryNode" />
+              <item name="SerpentMarioBros1GameAgentPlugin" type="462c0819:PsiDirectoryNode" />
+              <item name="files" type="462c0819:PsiDirectoryNode" />
+              <item name="ml_models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="serpent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="serpent" type="462c0819:PsiDirectoryNode" />
+              <item name="plugins" type="462c0819:PsiDirectoryNode" />
+              <item name="SerpentMarioBros1GameAgentPlugin" type="462c0819:PsiDirectoryNode" />
+              <item name="files" type="462c0819:PsiDirectoryNode" />
+              <item name="ml_models" type="462c0819:PsiDirectoryNode" />
+              <item name="cnn" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="serpent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="serpent" type="462c0819:PsiDirectoryNode" />
+              <item name="plugins" type="462c0819:PsiDirectoryNode" />
+              <item name="SerpentMarioBros1GamePlugin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="serpent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="serpent" type="462c0819:PsiDirectoryNode" />
+              <item name="plugins" type="462c0819:PsiDirectoryNode" />
+              <item name="SerpentMarioBros1GamePlugin" type="462c0819:PsiDirectoryNode" />
+              <item name="files" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="serpent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="serpent" type="462c0819:PsiDirectoryNode" />
+              <item name="plugins" type="462c0819:PsiDirectoryNode" />
+              <item name="SerpentMarioBros1GamePlugin" type="462c0819:PsiDirectoryNode" />
+              <item name="files" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="serpent" type="b2602c69:ProjectViewProjectNode" />
               <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
             </path>
             <path>
@@ -2348,31 +2410,31 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="serpent&#9;FILE&#9;file:///home/oscar/Dev/PycharmProjects/serpent/plugins/SerpentMarioBros1GameAgentPlugin/files/serpent_MarioBros1_game_agent.py" />
+    <property name="SearchEverywhereHistoryKey" value="resolutio&#9;FILE&#9;file:///home/oscar/Dev/PycharmProjects/serpent/lab/notes/resolutions&#10;serpent&#9;FILE&#9;file:///home/oscar/Dev/PycharmProjects/serpent/plugins/SerpentMarioBros1GameAgentPlugin/files/serpent_MarioBros1_game_agent.py" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../.." />
     <property name="nodejs.protractor.protractor_package" value="" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myShowDebugConsoleByDefault" value="true" />
     <option name="myIpythonEnabled" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/lab" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/plugins/SerpentMarioBros1GameAgentPlugin/files/ml_models/cnn/bkp" />
       <recent name="$PROJECT_DIR$/lab/notes" />
       <recent name="$PROJECT_DIR$/plugins/SerpentMarioBros1GameAgentPlugin/files/ml_models" />
       <recent name="$PROJECT_DIR$/lab/scratch" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lab" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -2387,7 +2449,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python Remote Debug.pydevd server">
+  <component name="RunManager" selected="Python.scratch_4">
     <configuration name="serpent" type="JupiterNotebook" factoryName="Jupyter Notebook">
       <module name="serpent" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -2421,7 +2483,9 @@
       <option name="HOST" value="localhost" />
       <PathMappingSettings>
         <option name="pathMappings">
-          <list />
+          <list>
+            <mapping local-root="$PROJECT_DIR$/../.." remote-root="/home/docker/development/Dev" />
+          </list>
         </option>
       </PathMappingSettings>
       <option name="REDIRECT_OUTPUT" value="false" />
@@ -2446,26 +2510,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="npysc" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="serpent" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/lab" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab/npysc.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="scratch_5" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="scratch" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="serpent" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -2478,13 +2523,32 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$APPLICATION_CONFIG_DIR$/scratches/scratch_5.py" />
+      <option name="SCRIPT_NAME" value="$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="scratch_6" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="scratch_2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="serpent" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/.virtualenvs/dev-lab-S8LRmcaK/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$APPLICATION_CONFIG_DIR$/scratches" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$APPLICATION_CONFIG_DIR$/scratches/scratch_2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="scratch_3" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="serpent" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -2497,48 +2561,47 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$APPLICATION_CONFIG_DIR$/scratches/scratch_6.py" />
+      <option name="SCRIPT_NAME" value="$APPLICATION_CONFIG_DIR$/scratches/scratch_3.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="torch_lab" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="scratch_4" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="serpent" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="CUDA_HOME" value="/opt/cuda/bin" />
       </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/lab/ml/conv_net" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="SDK_HOME" value="$USER_HOME$/.virtualenvs/dev-lab-S8LRmcaK/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$APPLICATION_CONFIG_DIR$/scratches" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab/ml/conv_net/torch_lab.py" />
+      <option name="SCRIPT_NAME" value="$APPLICATION_CONFIG_DIR$/scratches/scratch_4.py" />
       <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
     <list>
       <item itemvalue="Jupyter Notebook.serpent" />
       <item itemvalue="Python Remote Debug.pydevd server" />
-      <item itemvalue="Python.torch_lab" />
-      <item itemvalue="Python.scratch_5" />
-      <item itemvalue="Python.scratch_6" />
-      <item itemvalue="Python.npysc" />
       <item itemvalue="Python.dqn" />
+      <item itemvalue="Python.scratch" />
+      <item itemvalue="Python.scratch_2" />
+      <item itemvalue="Python.scratch_3" />
+      <item itemvalue="Python.scratch_4" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.scratch_4" />
+        <item itemvalue="Python.scratch_3" />
+        <item itemvalue="Python.scratch_2" />
+        <item itemvalue="Python.scratch" />
         <item itemvalue="Python.dqn" />
-        <item itemvalue="Python.npysc" />
-        <item itemvalue="Python.scratch_6" />
-        <item itemvalue="Python.scratch_5" />
-        <item itemvalue="Python.torch_lab" />
       </list>
     </recent_temporary>
   </component>
@@ -2573,23 +2636,22 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1930" y="1117" width="1345" height="1393" extended-state="0" />
-    <editor active="true" />
+    <frame x="1932" y="1119" width="1382" height="1389" extended-state="0" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="5" sideWeight="0.49977446" weight="0.3298969" />
       <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.50044644" side_tool="true" weight="0.31070197" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Python Console" order="9" weight="0.32438317" />
-      <window_info anchor="bottom" x="1928" y="2121" width="2544" height="391" id="Run" order="12" sideWeight="0.59969205" weight="0.32958803" />
+      <window_info anchor="bottom" x="1928" y="2121" width="2544" height="391" id="Run" order="12" sideWeight="0.59969205" visible="true" weight="0.32958803" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.15955056" />
-      <window_info anchor="right" content_ui="combo" x="1928" y="1115" width="2269" height="923" id="Project" order="6" sideWeight="0.5940075" weight="0.17300522" />
+      <window_info anchor="right" content_ui="combo" x="1928" y="1115" width="2269" height="923" id="Project" order="6" sideWeight="0.5877095" visible="true" weight="0.26193923" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" sideWeight="0.49935317" />
       <window_info anchor="right" auto_hide="true" x="2739" y="1167" width="930" height="1299" id="SciView" order="4" show_stripe_button="false" sideWeight="0.5527523" type="FLOATING" weight="0.37164178" />
       <window_info id="Structure" order="0" side_tool="true" weight="0.24971879" />
-      <window_info anchor="right" x="1928" y="1115" width="2269" height="923" id="Favorites" order="7" sideWeight="0.4059925" side_tool="true" weight="0.17300522" />
-      <window_info active="true" anchor="bottom" x="12" y="1119" width="1896" height="1029" id="Debug" order="4" sideWeight="0.49955356" type="WINDOWED" visible="true" weight="0.38567072" />
+      <window_info anchor="right" x="1928" y="1115" width="2269" height="923" id="Favorites" order="7" sideWeight="0.4122905" side_tool="true" visible="true" weight="0.26193923" />
+      <window_info active="true" anchor="bottom" x="3328" y="1119" width="1140" height="1389" id="Debug" order="4" sideWeight="0.49955356" type="WINDOWED" visible="true" weight="0.38567072" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.17822899" />
       <window_info anchor="bottom" id="Inspection" order="3" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -2638,15 +2700,15 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/plugins/SerpentMarioBros1GameAgentPlugin/files/serpent_MarioBros1_game_agent.py</url>
-          <line>113</line>
-          <option name="timeStamp" value="122" />
+          <url>file://$PROJECT_DIR$/plugins/SerpentMarioBros1GameAgentPlugin/files/ml_models/cnn/dqn.py</url>
+          <line>49</line>
+          <option name="timeStamp" value="128" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="124" />
+      <option name="time" value="129" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
@@ -2659,35 +2721,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/.PyCharm2018.1/system/python_stubs/-829093788/cv2/cv2/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="643">
-          <caret line="10684" column="39" selection-start-line="10684" selection-start-column="39" selection-end-line="10684" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_1.py" />
-    <entry file="file://$PROJECT_DIR$/lab/scratch/check_small_sprite_sheet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="725">
-          <caret line="46" column="39" selection-start-line="46" selection-start-column="39" selection-end-line="46" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lab/scratch/mario_image_diff.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="16" column="12" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.virtualenvs/dev-lab-S8LRmcaK/lib/python3.6/site-packages/serpent/cv.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="54" selection-start-line="20" selection-start-column="54" selection-end-line="20" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.virtualenvs/dev-lab-S8LRmcaK/lib/python3.6/site-packages/serpent/sprite_locator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
@@ -2723,7 +2756,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_4.py" />
     <entry file="file://$PROJECT_DIR$/lab/ml/digit_classification/digits.ipynb">
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
@@ -2807,27 +2839,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1147">
           <caret line="1281" selection-start-line="1281" selection-end-line="1281" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/SerpentMarioBros1GamePlugin/files/serpent_MarioBros1_game.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1119">
-          <caret line="72" column="43" selection-start-line="72" selection-start-column="43" selection-end-line="72" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/SerpentMarioBros1GamePlugin/files/api/api.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="820">
-          <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.virtualenvs/dev-lab-S8LRmcaK/lib/python3.6/site-packages/torch/nn/functional.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="105" column="49" lean-forward="true" selection-start-line="105" selection-start-column="49" selection-end-line="105" selection-end-column="49" />
         </state>
       </provider>
     </entry>
@@ -2939,28 +2950,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/SerpentMarioBros1GameAgentPlugin/files/ml_models/cnn/dqn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1003">
-          <caret line="87" column="8" selection-start-line="87" selection-start-column="8" selection-end-line="87" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-            <element signature="e#911#1771#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lab/play_mario_bros.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="6" column="49" selection-start-line="6" selection-start-column="49" selection-end-line="6" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lab/notes/resolutions">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -2971,13 +2964,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lab/scratch/check_colors.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/Markdown-facit">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -2985,23 +2971,118 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/SerpentMarioBros1GameAgentPlugin/files/serpent_MarioBros1_game_agent.py">
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="608">
+            <caret line="31" column="70" lean-forward="true" selection-start-line="31" selection-start-column="70" selection-end-line="31" selection-end-column="70" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lab/scratch/check_colors.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="256" column="87" lean-forward="true" selection-start-line="256" selection-start-column="87" selection-end-line="256" selection-end-column="87" />
+        <state relative-caret-position="396">
+          <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/SerpentMarioBros1GamePlugin/files/serpent_MarioBros1_game.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="26" column="20" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/SerpentMarioBros1GamePlugin/files/api/api.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1031">
+          <caret line="103" selection-start-line="103" selection-end-line="103" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lab/notes/resolutions">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python3.6/subprocess.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="430" column="65" selection-start-line="430" selection-start-column="65" selection-end-line="430" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.virtualenvs/dev-lab-S8LRmcaK/lib/python3.6/site-packages/torch/nn/functional.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="496">
+          <caret line="993" selection-start-line="993" selection-end-line="993" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_4.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="8" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/SerpentMarioBros1GameAgentPlugin/files/ml_models/cnn/dqn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="174" column="69" selection-start-line="174" selection-start-column="69" selection-end-line="174" selection-end-column="69" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="1033">
-            <caret line="32" column="2" selection-start-line="32" selection-start-column="2" selection-end-line="32" selection-end-column="2" />
-          </first_editor>
-          <second_editor />
+    <entry file="file://$USER_HOME$/.virtualenvs/dev-lab-S8LRmcaK/lib/python3.6/site-packages/pyautogui/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="163" selection-start-line="163" selection-end-line="163" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/SerpentMarioBros1GameAgentPlugin/files/serpent_MarioBros1_game_agent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="323" column="34" selection-start-line="323" selection-start-column="34" selection-end-line="323" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#2975#3823#0" />
+            <element signature="e#4756#4934#0" />
+            <element signature="e#5112#6481#0" />
+            <element signature="e#6311#6730#0" />
+            <element signature="e#6806#7630#0" />
+          </folding>
         </state>
       </provider>
     </entry>

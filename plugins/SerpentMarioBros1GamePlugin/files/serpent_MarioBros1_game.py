@@ -5,17 +5,15 @@ import time
 from serpent.utilities import Singleton
 
 
-
-
 class SerpentMarioBros1Game(Game, metaclass=Singleton):
 
     def __init__(self, **kwargs):
         kwargs["platform"] = "executable"
 
 
-        rom_path = Path("/home/oscar/Games/NES/super_mario_bros_1.nes")
-        kwargs["window_name"] = "FCEUX 2.2.3 debug"
-        kwargs["executable_path"] = "fceux " + str(rom_path)
+        rom_path = Path("/home/docker/development/Dev/super_mario_bros_1.nes")
+        kwargs["window_name"] = "FCEUX 2.2.2"
+        kwargs["executable_path"] = "nes " + str(rom_path)
 
 
         super().__init__(**kwargs)
@@ -26,7 +24,7 @@ class SerpentMarioBros1Game(Game, metaclass=Singleton):
     def after_launch(self):
         self.is_launched = True
 
-        time.sleep(5)
+        time.sleep(1)
         windows = self.window_controller.locate_window(self.window_name).split("\n")
         self.window_id = self.window_controller.locate_window(self.window_name).split("\n")[0]
 

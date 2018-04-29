@@ -12,7 +12,7 @@ class MarioBros1API(GameAPI):
     def __init__(self, game=None):
         super().__init__(game=game)
         with open(
-                '/home/oscar/Dev/PycharmProjects/serpent/plugins/SerpentMarioBros1GameAgentPlugin/files/ml_models/digit_classifier.pkl',
+                '/home/docker/development/Dev/PycharmProjects/serpent/plugins/SerpentMarioBros1GameAgentPlugin/files/ml_models/digit_classifier.pkl',
                 'rb') as pkl:
             self.digit_classifier = pickle.load(pkl)
 
