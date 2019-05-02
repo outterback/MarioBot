@@ -1,0 +1,11 @@
+text
+    left, top: (8, 24) (first white pixel)
+    char sixe: 7 x 7
+    space: 1px
+
+    space between mario, world
+        1 px, 79 px, 1 px
+
+    mario-size (60, 14)
+
+
